@@ -1,6 +1,6 @@
 class Book(object):
-    def __init__(self, id: int, name: str, pages: int):
-        self.id = id
+    def __init__(self, id_: int, name: str, pages: int):
+        self.id = id_
         self.name = name
         self.pages = pages
 
@@ -29,3 +29,17 @@ class Library(object):
             if book_id == book.id:
                 return index
         raise ValueError("Книги с запрашиваемым id не существует.")
+
+
+book1 = Book(id_=0, name="Библия", pages=666)
+print(book1.__str__())
+print(book1.__repr__())
+
+book2 = Book(id_=1, name="Библия 2", pages=667)
+book3 = Book(id_=2, name="Библия 3", pages=668)
+
+lib = Library([book1, book2, book3])
+
+print(lib.get_next_book_id())
+print(lib.get_index_by_book_id(book_id=2))
+print(lib.get_index_by_book_id(book_id=47))
